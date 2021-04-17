@@ -6,14 +6,14 @@
  */
 public class LighterFilter extends Filter
 {
-	/**
-	 * Constructor for objects of class LighterFilter.
+    /**
+     * Constructor for objects of class LighterFilter.
      * @param name The name of the filter.
-	 */
-	public LighterFilter(String name)
+     */
+    public LighterFilter(String name)
     {
         super(name);
-	}
+    }
 
     /**
      * Apply this filter to an image.
