@@ -1,18 +1,18 @@
 import java.awt.Color;
 
 /**
- * A filter to create a Warhol type image out of the image provided.
+ * A filter to create a wacky Warhol type image out of the image provided.
  * 
  * @author Christopher Urban.
  * @version 4-17-2021
  */
-public class WarholFilter extends Filter
+public class FlippedWarhol extends Filter
 {
     /**
-     * Constructor for objects of class WarholFilter.
+     * Constructor for objects of class FlippedWarhol.
      * @param name The name of the filter.
      */
-    public WarholFilter(String name)
+    public FlippedWarhol(String name)
     {
         super(name);
     }
@@ -36,10 +36,10 @@ public class WarholFilter extends Filter
             }
         }
         for(int y = 0; y < (height/2); y++) {
-            for(int x = 0; x < (width/2); x++) {
+            for(int x = 0, rx = (width/2)-1; x < (width/2); x++, rx--) {
                 Color rPixel = rImage.getPixel(x, y);
-                rImage.setPixel(x+(width/2),y,rPixel);
-                int pixel = rImage.getRGB(x+(width/2),y);
+                rImage.setPixel(rx+(width/2),y,rPixel);
+                int pixel = rImage.getRGB(rx+(width/2),y);
                 Color color = new Color(pixel, true);
                 int redValue = color.getRed();
                 int blueValue = color.getBlue();
@@ -55,14 +55,14 @@ public class WarholFilter extends Filter
                 }
                 Color newColor = new Color(redValue, greenValue, blueValue);
                 
-                rImage.setRGB(x+(width/2),y,newColor.getRGB());
+                rImage.setRGB(rx+(width/2),y,newColor.getRGB());
             }
         }
-        for(int y = 0; y < (height/2); y++) {
+        for(int y = 0, ry = (height/2)-1; y < (height/2); y++, ry--) {
             for(int x = 0; x < (width/2); x++) {
                 Color gPixel = gImage.getPixel(x, y);
-                gImage.setPixel(x,y+(height/2),gPixel);
-                int pixel = gImage.getRGB(x,y+(height/2));
+                gImage.setPixel(x,ry+(height/2),gPixel);
+                int pixel = gImage.getRGB(x,ry+(height/2));
                 Color color = new Color(pixel, true);
                 int redValue = color.getRed();
                 int blueValue = color.getBlue();
@@ -78,14 +78,14 @@ public class WarholFilter extends Filter
                 }
                 Color newColor = new Color(redValue, greenValue, blueValue);
                 
-                rImage.setRGB(x,y+(height/2),newColor.getRGB());
+                rImage.setRGB(x,ry+(height/2),newColor.getRGB());
             }
         }
-        for(int y = 0; y < (height/2); y++) {
-            for(int x = 0; x < (width/2); x++) {
+        for(int y = 0, ry = (height/2)-1; y < (height/2); y++, ry--) {
+            for(int x = 0, rx = (width/2)-1; x < (width/2); x++, rx--) {
                 Color bPixel = bImage.getPixel(x, y);
-                bImage.setPixel(x+(width/2),y+(height/2),bPixel);
-                int pixel = bImage.getRGB(x,y+(height/2));
+                bImage.setPixel(rx+(width/2),ry+(height/2),bPixel);
+                int pixel = bImage.getRGB(rx+(width/2),ry+(height/2));
                 Color color = new Color(pixel, true);
                 int redValue = color.getRed();
                 int blueValue = color.getBlue();
@@ -101,7 +101,7 @@ public class WarholFilter extends Filter
                 }
                 Color newColor = new Color(redValue, greenValue, blueValue);
                 
-                rImage.setRGB(x+(width/2),y+(height/2),newColor.getRGB());
+                rImage.setRGB(rx+(width/2),ry+(height/2),newColor.getRGB());
             }
         }
     }
